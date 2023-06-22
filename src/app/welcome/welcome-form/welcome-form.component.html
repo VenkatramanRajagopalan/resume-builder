@@ -1,0 +1,29 @@
+<div class="welcome-form-component">
+    <!-- Form -->
+    <div class="form-container mt-5">
+        <form>
+            <label class="form-label app-color-text-subheading mb-3"><b>Tell us a bit about yourself</b></label>
+            <div class="mb-4">
+                <input type="text" class="form-control" id="candidateName" placeholder="Name">
+            </div>
+    
+            <div class="mb-4">
+                <input type="email" class="form-control" id="candidateEmail" placeholder="Email">
+            </div>
+    
+            <label class="form-label app-color-text-subheading"><b>What do you want to add in your resume?</b></label>
+    
+            <div class="sections">
+                <div class="sections-wrapper" *ngFor="let section of sectionsList">
+                    <button type="button" class="btn btn-round app-outline-primary" (click)="toggleSelection(section)"
+                    [ngClass]="{'app-bg-primary app-color-appWhite': section.isSelected}" [disabled]="section.isMandatory">{{section.title}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="footer app-bg-light">
+        <div class="d-grid gap-2">
+            <button class="btn btn-round app-bg-primary app-color-appWhite" (click)="onClickContinue()">Continue</button>
+        </div>
+    </div>
+</div>

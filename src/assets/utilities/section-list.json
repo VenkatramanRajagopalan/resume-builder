@@ -5,32 +5,12 @@
         "isMandatory": true
     },
     {
-        "id": "002",
-        "title": "Profile Summary",
-        "isMandatory": true
-    },
-    {
         "id": "003",
         "title": "Contact Details",
         "isMandatory": true
     },
     {
         "id": "004",
-        "title": "Education Details",
-        "isMandatory": false
-    },
-    {
-        "id": "005",
-        "title": "Education Details",
-        "isMandatory": false
-    },
-    {
-        "id": "006",
-        "title": "Education Details",
-        "isMandatory": false
-    },
-    {
-        "id": "007",
         "title": "Education Details",
         "isMandatory": false
     },

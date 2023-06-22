@@ -1,0 +1,42 @@
+@import 'theme-variables';
+
+$containerWidth: 645px;
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: $welcomeContainerWidth;
+    position: relative;
+
+    .welcome-msg h1 {
+        font-size: 56px;
+        overflow: hidden;
+        text-align: center;
+        flex-grow: 1;
+        // border-right: .03em solid $colorPrimaryLight;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .15em;
+        animation: typing 2s steps(19, end);
+        font-family: 'BerlinSans' !important;
+    }
+
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .welcome-container {
+        max-width: 90%;
+        .welcome-msg h1 {
+          font-size: 46px;
+          overflow: unset;
+          white-space: unset;
+          animation: unset;
+        }
+    }
+
+}

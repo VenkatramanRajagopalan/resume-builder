@@ -18,7 +18,7 @@
         "id": "contactEmail",
         "label": "Email",
         "type": "INPUT",
-        "format": "text",
+        "format": "email",
         "placeholderText": "",
         "spanSize": "1",
         "validationRules": [
@@ -47,7 +47,7 @@
         ]
     }, {
         "id": "contactAddress",
-        "label": "Mobile",
+        "label": "Address",
         "type": "INPUT",
         "format": "text",
         "placeholderText": "",

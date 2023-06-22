@@ -1,0 +1,68 @@
+@import './theme-variables';
+
+@font-face {
+    font-family: Corbel;
+    src: url(../assets/fonts/corbel/CORBEL.TTF);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Corbel;
+    src: url(../assets/fonts/corbel/CorbelBold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Corbel;
+    src: url(../assets/fonts/corbel/CorbelItalic.ttf);
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Corbel;
+    src: url(../assets/fonts/corbel/CorbelBoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: BerlinSans;
+    src: url(../assets/fonts/berlin-sans-fb-regular.TTF);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: BerlinSans;
+    src: url(../assets/fonts/berlin-sans-fb-bold.TTF);
+    font-weight: bold;
+}
+
+.theme-light {
+    @each $color-key, $color-var in $color-map-light {
+        .app-bg-#{$color-key} {
+            background-color: $color-var;
+        }
+    
+        .app-color-#{$color-key} {
+            color: $color-var;
+        }
+
+        .app-outline-#{$color-key} {
+            border: 1px solid $color-var;
+        }
+    }
+}
+
+html, body {
+    font-family: 'Corbel';
+    background-color: $colorBGLight;
+}
+
+input {
+    border: 1px solid $colorPrimaryLight !important;
+    border-radius: 0.2em !important;
+    &:focus {
+        box-shadow: 0 0 0 0.25rem $colorPrimaryLightShadow !important;
+    }
+}
