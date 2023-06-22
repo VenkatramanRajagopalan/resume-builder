@@ -1,0 +1,92 @@
+[
+    {
+        "id": "001",
+        "title": "Profile Summary",
+        "key": "profileSummarySection",
+        "isMandatory": true,
+        "isMultiple": false,
+        "hints": [],
+        "fields": ["candidateName", "cadidateJobRole", "objectiveSummary"]
+    },
+    {
+        "id": "002",
+        "title": "Profile Summary",
+        "key": "profileSummarySection",
+        "isMandatory": true,
+        "isMultiple": false,
+        "hints": [],
+        "fields": ["candidateName", "cadidateJobRole"]
+    },
+    {
+        "id": "003",
+        "title": "Contact Details",
+        "key": "contactDetailsSection",
+        "isMandatory": true,
+        "isMultiple": false,
+        "hints": [],
+        "fields": ["contactEmail", "contactMobileNumber", "contactAddress"]
+    },
+    {
+        "id": "004",
+        "title": "Education Details",
+        "key": "educationDetailsSection",
+        "isMandatory": false,
+        "isMultiple": true,
+        "hints": [],
+        "fields": ["institutionName", "degree", "institutionLocation", "passedOutYear"]
+    },
+    {
+        "id": "005",
+        "title": "Education Details",
+        "key": "educationDetailsSection",
+        "isMandatory": false,
+        "isMultiple": true,
+        "hints": [],
+        "fields": ["institutionName", "degree", "institutionLocation", "passedOutYearFrom", "passedOutYearTo"]
+    },
+    {
+        "id": "006",
+        "title": "Education Details",
+        "key": "educationDetailsSection",
+        "isMandatory": false,
+        "isMultiple": true,
+        "hints": [],
+        "fields": ["institutionName", "degree", "institutionLocation", "passedOutYearFrom", "passedOutYearTo", "institutionAchievements"]
+    },
+    {
+        "id": "007",
+        "title": "Education Details",
+        "key": "educationDetailsSection",
+        "isMandatory": false,
+        "isMultiple": true,
+        "hints": [],
+        "fields": ["institutionName", "degree", "institutionLocation", "passedOutYear", "institutionAchievements"]
+    },
+    {
+        "id": "008",
+        "title": "Skills",
+        "key": "skillsSection",
+        "isMandatory": false,
+        "isMultiple": true,
+        "hints": [],
+        "fields": ["candidateSkills"]
+    },
+    {
+        "id": "009",
+        "title": "Languages Known",
+        "key": "languagesKnownSection",
+        "isMandatory": false,
+        "isMultiple": true,
+        "hints": [],
+        "fields": ["languagesKnown"]
+    },
+    {
+        "id": "010",
+        "title": "Experience",
+        "key": "experienceSection",
+        "isMandatory": false,
+        "isMultiple": true,
+        "hints": [],
+        "fields": ["organizationName", "organizationRole", "organizationLocation", "organizationDateRange", "jobDescription"]
+    }
+]
