@@ -1,0 +1,337 @@
+[
+    {
+        "id": "objectiveSummary",
+        "label": "Provide a brief summary about your career",
+        "type": "TEXT_AREA",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._$]/",
+                "errorMessage": "Please enter a valid objective summary"
+            }
+        ]
+    },
+    {
+        "id": "contactEmail",
+        "label": "Email",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide an email id"
+            }, {
+                "ruleName": "emailValidator",
+                "errorMessage": "Please enter a valid email id"
+            }
+        ]
+    }, {
+        "id": "contactMobileNumber",
+        "label": "Mobile",
+        "type": "INPUT_GROUP_MOBILE",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide mobile number"
+            }, {
+                "ruleName": "phoneNumberValidator",
+                "errorMessage": "Please enter a valid mobile number"
+            }
+        ]
+    }, {
+        "id": "contactAddress",
+        "label": "Mobile",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide an address"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._,-#]/",
+                "errorMessage": "Please enter a valid address"
+            }
+        ]
+    },
+    {
+        "id": "candidateName",
+        "label": "Name",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide an objective"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._$]/",
+                "errorMessage": "Please enter a valid objective summary"
+            }
+        ]
+    }, {
+        "id": "cadidateJobRole",
+        "label": "Job Role",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._$]/",
+                "errorMessage": "Please enter a valid objective summary"
+            }
+        ]
+    },
+    {
+        "id": "institutionName",
+        "label": "Institution Name",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide an name"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._,-]/",
+                "errorMessage": "Please enter a valid institute name"
+            }
+        ]
+    }, {
+        "id": "degree",
+        "label": "Degree",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide a degree"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._,-]/",
+                "errorMessage": "Please enter a valid degree"
+            }
+        ]
+    }, {
+        "id": "institutionLocation",
+        "label": "Location",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide a location"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._,-]/",
+                "errorMessage": "Please enter a valid location detail"
+            }
+        ]
+    }, {
+        "id": "institutionAchievements",
+        "label": "Achievements & Learnings",
+        "type": "TEXT_AREA",
+        "format": "numberList",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide some input"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._$]/",
+                "errorMessage": "Please enter valid details"
+            }
+        ]
+    }, {
+        "id": "passedOutYear",
+        "label": "Year of Completion",
+        "type": "INPUT",
+        "format": "date",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please select a date"
+            }
+        ]
+    }, {
+        "id": "instutionDateRange",
+        "type": "INPUT_GROUP",
+        "groupSpan": "4",
+        "groupFields": ["fromDate", "toDate"]
+    }, {
+        "id": "fromDate",
+        "label": "From Date",
+        "type": "INPUT",
+        "format": "date",
+        "placeholderText": "",
+        "spanSize": "2",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please select a date"
+            }
+        ]
+    }, {
+        "id": "toDate",
+        "label": "To Date",
+        "type": "INPUT",
+        "format": "date",
+        "placeholderText": "",
+        "spanSize": "2",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please select a date"
+            }, {
+                "ruleName": "shouldBeGreater",
+                "prop": "passedOutYearFrom",
+                "errorMessage": "Please select a date greater than from date"
+            }
+        ]
+    }, {
+        "id": "candidateSkills",
+        "label": "Skills",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please enter a skill"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._,-]/",
+                "errorMessage": "Please enter a valid skill"
+            }
+        ]
+    }, {
+        "id": "languagesKnown",
+        "type": "INPUT_GROUP",
+        "groupSpan": "4",
+        "groupFields": ["languageName", "langProficiency"]
+    }, {
+        "id": "languageName",
+        "type": "INPUT",
+        "placeholderText": "",
+        "format": "text",
+        "spanSize": "3",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please enter a skill"
+            }, {
+                "ruleName": "charactersOnly",
+                "errorMessage": "Please enter a valid skill"
+            }
+        ]
+    }, {
+        "id": "langProficiency",
+        "type": "SINGLE_SELECT",
+        "defaultSelectIndex": "0",
+        "placeholderText": "",
+        "spanSize": "1",
+        "options": [{"id": "1", "value": "1"}, {"id": "2", "value": "2"}, {"id": "3", "value": "3"}, {"id": "4", "value": "4"}, {"id": "5", "value": "5"}],
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please enter a skill"
+            }
+        ]
+    }, {
+        "id": "organizationName",
+        "label": "Organization Name",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please enter an organization name"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._,-]/",
+                "errorMessage": "Please enter a valid organization name"
+            }
+        ]
+    }, {
+        "id": "organizationRole",
+        "label": "Job Role",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please enter a job role"
+            }, {
+                "ruleName": "charactersOnly",
+                "errorMessage": "Please enter a valid job role"
+            }
+        ]
+    }, {
+        "id": "organizationLocation",
+        "label": "Location",
+        "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide a location"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._,-]/",
+                "errorMessage": "Please enter a valid location detail"
+            }
+        ]
+    }, {
+        "id": "organizationDateRange",
+        "type": "INPUT_GROUP",
+        "groupSpan": "4",
+        "groupFields": ["fromDate", "toDate"]
+    }, {
+        "id": "jobDescription",
+        "label": "Job Description",
+        "type": "TEXT_AREA",
+        "format": "numberList",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "required",
+                "errorMessage": "Please provide some input"
+            }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._$#-,!()*&%]/",
+                "errorMessage": "Please enter valid details"
+            }
+        ]
+    }
+]

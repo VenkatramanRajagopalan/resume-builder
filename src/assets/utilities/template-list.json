@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Sample Template",
+        "templateFile": "sample-template.json",
+        "thumbnail": "sample-template-thumnail.svg",
+        "category": ["001", "002", "003", "004"],
+        "createdDate": "Wed Jun 21 2023 22:20:00",
+        "timeInMillis": 1687366200000
+    }
+]
