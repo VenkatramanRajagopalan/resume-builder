@@ -1,1 +1,18 @@
-<p>template-list works!</p>
+<div class="template-list-component mt-5">
+    <div class="template-list-container">
+        <h5 class="form-label app-color-text-subheading mb-3 sub-heading"><b>Choose a template</b></h5>
+        <div class="template-list container text-center">
+            <div class="row">
+                <div *ngFor="let template of templateList" class="col-6 col-sm-6 col-md-4 col-lg-4 template-item" (click)="onTemplateClick(template)">
+                    <img [src]="'assets/images/template-thumbnails/'+template.thumbnail" [ngClass]="{'selected-template': template.isSelected}" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer app-bg-light">
+        <div class="footer-flex">
+            <button class="btn btn-round app-bg-appWhite app-color-primary btn-large px-4" (click)="onClickBack()">Back</button>
+            <button class="btn btn-round app-bg-primary app-color-appWhite btn-large px-4" (click)="onClickContinue()">Continue</button>
+        </div>
+    </div>
+</div>

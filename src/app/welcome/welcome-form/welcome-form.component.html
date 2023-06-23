@@ -2,7 +2,7 @@
     <!-- Form -->
     <div class="form-container mt-5">
         <form>
-            <label class="form-label app-color-text-subheading mb-3"><b>Tell us a bit about yourself</b></label>
+            <h5 class="form-label app-color-text-subheading mb-3"><b>Tell us a bit about yourself</b></h5>
             <div class="mb-4">
                 <input type="text" class="form-control" id="candidateName" placeholder="Name">
             </div>
@@ -11,7 +11,7 @@
                 <input type="email" class="form-control" id="candidateEmail" placeholder="Email">
             </div>
     
-            <label class="form-label app-color-text-subheading"><b>What do you want to add in your resume?</b></label>
+            <h5 class="form-label app-color-text-subheading"><b>What do you want to add in your resume?</b></h5>
     
             <div class="sections">
                 <div class="sections-wrapper" *ngFor="let section of sectionsList">
@@ -23,7 +23,7 @@
     </div>
     <div class="footer app-bg-light">
         <div class="d-grid gap-2">
-            <button class="btn btn-round app-bg-primary app-color-appWhite" (click)="onClickContinue()">Continue</button>
+            <button class="btn btn-round app-bg-primary app-color-appWhite btn-large" (click)="onClickContinue()">Continue</button>
         </div>
     </div>
 </div>

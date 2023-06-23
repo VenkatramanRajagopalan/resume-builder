@@ -1,10 +1,12 @@
 export interface TemplateList {
+    id: string,
     name: string,
     templateFile: string,
     thumbnail: string,
     section: string[],
     createdDate: string,
-    timeInMillis: number
+    timeInMillis: number,
+    isSelected?: boolean
 }
 
 export interface Template {

@@ -1,6 +1,7 @@
 [
     {
-        "name": "Sample Template",
+        "id": "sampleTemplate1",
+        "name": "Sample Template 1",
         "templateFile": "sample-template.json",
         "thumbnail": "sample-template-thumnail.svg",
         "section": ["001", "002", "003", "004"],

@@ -1,0 +1,34 @@
+@import 'theme-variables';
+
+.template-list-component {
+    padding-bottom: 80px;
+    .template-list-container {
+        .sub-heading {
+            padding-left: 12px;
+        }
+        .template-list {
+            .template-item {
+                cursor: pointer;
+                margin-bottom: 32px;
+                img {
+                    width: 100%;
+                }
+            }
+
+            .selected-template {
+                border: 3px solid $colorPrimaryLight;
+                box-shadow: 0px 0px 20px 7px $colorPrimaryLightShadow;
+                transition: 0s;
+            }
+        }
+    }
+}
+
+.footer {
+    padding-left: 12px;
+    padding-right: 12px;
+    .footer-flex {
+        display: flex;
+        justify-content: space-between;
+    }
+}

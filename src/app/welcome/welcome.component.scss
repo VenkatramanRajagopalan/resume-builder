@@ -1,7 +1,5 @@
 @import 'theme-variables';
 
-$containerWidth: 645px;
-
 .welcome-container {
     display: flex;
     flex-direction: column;
@@ -30,7 +28,6 @@ $containerWidth: 645px;
 
 @media only screen and (max-width: 650px) {
     .welcome-container {
-        max-width: 90%;
         .welcome-msg h1 {
           font-size: 46px;
           overflow: unset;
