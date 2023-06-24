@@ -10,6 +10,7 @@ export interface FormField {
     validationRules?: ValidationRules[],
     groupSpan?: number,
     groupFields?: string[],
+    groupFieldsList?: FormField[],
     options?: SelectOption[]
 }
 

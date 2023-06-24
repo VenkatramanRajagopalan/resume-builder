@@ -1,0 +1,73 @@
+@import 'theme-variables';
+
+.builder-component {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 100%;
+
+    .side-nav-section {
+        width: 72px;
+        background-color: $colorPrimaryLight;
+        padding: 12px 0px;
+
+        .nav-item {
+            padding: 0px 12px;
+            text-align: center;
+            cursor: pointer;
+            .nav-icon {
+                font-size: 24px;
+                color: $colorInActiveLight;
+            }
+            .nav-text {
+                color: $colorInActiveLight;
+                font-size: 14px;
+                text-decoration: none;
+            }
+        }
+
+        .active-nav {
+            .nav-icon, .nav-text {
+                color: $colorWhiteLight !important;
+            }
+        }
+    }
+
+    .toolbar-section {
+        width: 25%;
+        flex-basis: 350px;
+        background-color: $colorBGLight;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    
+    .design-preview-section {
+        flex-grow: 1;
+        background-image: linear-gradient(45deg, $colorWhiteLight 25%, transparent 25%), linear-gradient(-45deg, $colorWhiteLight 25%, transparent 25%), linear-gradient(45deg, transparent 75%, $colorWhiteLight 75%), linear-gradient(-45deg, transparent 75%, $colorWhiteLight 75%);
+        background-size: 12px 12px;
+        background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+        position: relative;
+
+        .design-canvas {
+            position: absolute;
+            height: 85%;
+            width: 37%;
+            min-width: 37%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $colorWhiteLight;
+            box-shadow: 0px 0px 20px 7px $colorPrimaryLightShadow;
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .design-preview-section {
+        display: none;
+    }
+
+}

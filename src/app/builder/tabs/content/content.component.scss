@@ -1,0 +1,32 @@
+@import 'theme';
+
+.content-tab {
+    .accordion-item {
+        border-top: 1px solid $colorBorderLight;
+
+        &:last-child {
+            border-bottom: 1px solid $colorBorderLight;
+        }
+
+        .accordion-button {
+            font-size: 16px;
+            color: $colorPrimaryLight;
+            
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+
+        .sub-heading {
+            font-size: 12px;
+        }
+
+        .mobile-input-code {
+            flex-basis: 50px;
+            margin-right: 8px;
+        }
+    }
+    .footer-buttons {
+        margin-top: 34px;
+    }
+}

@@ -54,12 +54,22 @@
     }
 }
 
+@for $i from 1 through 10 {
+    .app-flex-grow-#{$i} {
+        flex-grow: $i !important;
+    }
+}
+
 html, body {
     font-family: 'Corbel';
     background-color: $colorBGLight;
 }
 
-input {
+h1, h2, h3, h4, h5, h6, p, label, span {
+    color: $colorPrimaryLight;
+}
+
+input, textarea, select {
     border: 1px solid $colorPrimaryLight !important;
     border-radius: 0.2em !important;
     &:focus {

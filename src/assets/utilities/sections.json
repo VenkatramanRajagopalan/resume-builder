@@ -29,6 +29,7 @@
     {
         "id": "004",
         "title": "Education Details",
+        "subHeading": "Add in reverse chronological order",
         "key": "educationDetailsSection",
         "isMandatory": false,
         "isMultiple": true,
@@ -38,6 +39,7 @@
     {
         "id": "005",
         "title": "Education Details",
+        "subHeading": "Add in reverse chronological order",
         "key": "educationDetailsSection",
         "isMandatory": false,
         "isMultiple": true,
@@ -47,6 +49,7 @@
     {
         "id": "006",
         "title": "Education Details",
+        "subHeading": "Add in reverse chronological order",
         "key": "educationDetailsSection",
         "isMandatory": false,
         "isMultiple": true,
@@ -56,6 +59,7 @@
     {
         "id": "007",
         "title": "Education Details",
+        "subHeading": "Add in reverse chronological order",
         "key": "educationDetailsSection",
         "isMandatory": false,
         "isMultiple": true,

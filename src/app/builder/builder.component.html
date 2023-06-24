@@ -1,1 +1,21 @@
-<p>builder works!</p>
+<div class="builder-component">
+    <div class="side-nav-section">
+        <div class="nav flex-column">
+            <li class="nav-item" *ngFor="let tab of tabs" (click)="onTabSelected(tab)" [ngClass]="{'active-nav' : tab.id === selectedTab.id}">
+                <i class="bi nav-icon" [class]="tab.icon"></i>
+                <p class="active nav-text" aria-current="page" href="#">{{tab.label}}</p>
+            </li>
+        </div>
+    </div>
+    <div class="toolbar-section pt-3">
+        <h4 class="px-3 py-3"><b>{{selectedTab.label}}</b></h4>
+        <app-content *ngIf="selectedTab.id === 0" [availableSections]="availableSections" (onSectionValueChange)="onSectionValueChange($event)"></app-content>
+        <app-theme *ngIf="selectedTab.id === 1"></app-theme>
+        <app-export *ngIf="selectedTab.id === 2"></app-export>
+    </div>
+    <div class="design-preview-section">
+        <div class="design-canvas">
+            <app-canvas></app-canvas>
+        </div>
+    </div>
+</div>

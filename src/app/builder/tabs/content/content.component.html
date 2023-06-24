@@ -1,0 +1,108 @@
+<div class="content-tab">
+    <div class="accordion accordion-flush" id="sections">
+        <div class="accordion-item app-bg-light" *ngFor="let section of availableSections; let i = index">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed app-bg-light py-3" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+section.id" aria-expanded="true" [attr.aria-controls]="section.id">
+              <b>{{section.title}}</b>
+              <!-- <i class="bi bi-lightbulb"></i> -->
+            </button>
+          </h2>
+          <div [id]="section.id" class="accordion-collapse collapse" data-bs-parent="#sections">
+              <div class="accordion-body pt-0">
+                <label *ngIf="section.subHeading" class="mb-2 sub-heading">{{section.subHeading}}</label>
+                <div *ngFor="let field of section.fieldsList">
+                    
+                    <!-- Input Field -->
+                    <div *ngIf="field.type === INPUT_TYPES.INPUT" class="mb-4">
+                        <div>
+                            <label [for]="field.id" class="form-label m-0"><b>{{field.label}}</b></label>
+                            <input
+                                [type]="field.format ? field.format : ''"
+                                class="form-control"
+                                [id]="field.id"
+                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                [placeholder]="field.placeholderText" />
+                        </div>
+                    </div>
+
+                    <!-- Text Area Field -->
+                    <div *ngIf="field.type === INPUT_TYPES.TEXT_AREA" class="mb-4">
+                        <div>
+                            <label [for]="field.id" class="form-label m-0"><b>{{field.label}}</b></label>
+                            <textarea
+                                class="form-control"
+                                [id]="field.id"
+                                rows="4"
+                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                [placeholder]="field.placeholderText"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- INPUT_GROUP Field -->
+                    <div *ngIf="field.type === INPUT_TYPES.INPUT_GROUP" class="mb-4 d-flex justify-content-between">
+                        <div *ngFor="let groupItem of field.groupFieldsList" [class]="'flex-grow-'+groupItem.spanSize">
+                            <div *ngIf="groupItem.type === INPUT_TYPES.INPUT" class="mb-4 me-3">
+                                <label [for]="groupItem.id" class="form-label m-0"><b>{{groupItem.label}}</b></label>
+                                <input
+                                    [type]="groupItem.format ? groupItem.format : ''"
+                                    class="form-control"
+                                    [id]="groupItem.id"
+                                    [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id][groupItem.id] : contentJSON[section.key][field.id][groupItem.id]"
+                                    [placeholder]="groupItem.placeholderText" />
+                            </div>
+                            <div *ngIf="groupItem.type === INPUT_TYPES.SINGLE_SELECT" class="mb-4">
+                                <label [for]="groupItem.id" class="form-label m-0"><b>{{groupItem.label}}</b></label>
+                                <select
+                                    class="form-select" 
+                                    [id]="groupItem.id"
+                                    [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                    [attr.aria-label]="groupItem.placeholderText">
+                                    <option *ngFor="let option of groupItem.options" [value]="option.id">{{option.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Mobile group Field -->
+                    <div *ngIf="field.type === INPUT_TYPES.INPUT_GROUP_MOBILE" class="mb-4">
+                        <label [for]="field.id" class="form-label m-0"><b>{{field.label}}</b></label>
+                        <div class="d-flex">
+                            <input
+                                type="text"
+                                class="form-control app-flex-grow-1 mobile-input-code"
+                                [id]="field.id+'Code'"
+                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id+'Code'] : contentJSON[section.key][field.id]"
+                                [placeholder]="field.placeholderText" />
+                            <input
+                                [type]="field.format ? field.format : ''"
+                                class="form-control app-flex-grow-3"
+                                [id]="field.id"
+                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                [placeholder]="field.placeholderText" />
+                        </div>
+                    </div>
+                    
+                    <!-- Single Select Field -->
+                    <div *ngIf="field.type === INPUT_TYPES.SINGLE_SELECT" class="mb-4">
+                        <div>
+                            <label [for]="field.id" class="form-label m-0"><b>{{field.label}}</b></label>
+                            <select
+                                class="form-select" 
+                                [id]="field.id"
+                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                [attr.aria-label]="field.placeholderText">
+                                <option *ngFor="let option of field.options" [value]="option.id">{{option.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-buttons d-flex justify-content-end">
+                    <button class="btn btn-round app-bg-primary app-color-appWhite px-4" *ngIf="!section.isMultiple" (click)="onClickSaveButton(section)">Save</button>
+                    <button class="btn btn-round app-bg-primary app-color-appWhite px-4" *ngIf="section.isMultiple" (click)="onClickAddUpdateButton(section)">{{isEditSection === section.id ? 'Update' : 'Add'}}</button>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

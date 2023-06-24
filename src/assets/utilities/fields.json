@@ -1,20 +1,5 @@
 [
     {
-        "id": "objectiveSummary",
-        "label": "Provide a brief summary about your career",
-        "type": "TEXT_AREA",
-        "format": "text",
-        "placeholderText": "",
-        "spanSize": "1",
-        "validationRules": [
-            {
-                "ruleName": "alphanumericWithFewSpecialCharacters",
-                "prop": "/[a-zA-Z0-9\\._$]/",
-                "errorMessage": "Please enter a valid objective summary"
-            }
-        ]
-    },
-    {
         "id": "contactEmail",
         "label": "Email",
         "type": "INPUT",
@@ -84,6 +69,21 @@
         "id": "cadidateJobRole",
         "label": "Job Role",
         "type": "INPUT",
+        "format": "text",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._$]/",
+                "errorMessage": "Please enter a valid objective summary"
+            }
+        ]
+    },
+    {
+        "id": "objectiveSummary",
+        "label": "Provide a brief summary about your career",
+        "type": "TEXT_AREA",
         "format": "text",
         "placeholderText": "",
         "spanSize": "1",
@@ -213,7 +213,7 @@
         ]
     }, {
         "id": "candidateSkills",
-        "label": "Skills",
+        "label": "Enter your skills",
         "type": "INPUT",
         "format": "text",
         "placeholderText": "",
@@ -236,6 +236,7 @@
     }, {
         "id": "languageName",
         "type": "INPUT",
+        "label": "Language",
         "placeholderText": "",
         "format": "text",
         "spanSize": "3",
@@ -251,6 +252,7 @@
     }, {
         "id": "langProficiency",
         "type": "SINGLE_SELECT",
+        "label": "Proficiency",
         "defaultSelectIndex": "0",
         "placeholderText": "",
         "spanSize": "1",
