@@ -1,3 +1,23 @@
 <div class="themes-tab px-3">
-    <p>Themes work</p>
+    <form>
+        <div class="mb-3">
+            <label for="exportFileName" class="form-label m-0"><b>Pick a theme for your resume</b></label>
+            <div class="mt-2">
+                <span
+                    *ngFor="let theme of templateDetails.themes" class="theme-circle" [ngClass]="{'active': theme.isActive}" (click)="onThemeSelect(theme)"
+                    [attr.style]="'background-image: linear-gradient(to right, ' + theme.colorPrimary + ' 50%, ' + theme.colorSecondary + ' 50%);'">
+                </span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="exportFileName" class="form-label m-0"><b>Font Style</b></label>
+            <select class="form-select" id="exportFileName" [(ngModel)]="templateDetails.fontStyle" name="exportFileName" placeholder="">
+                <option *ngFor="let font of supportedFonts" [value]="font">{{font}}</option>
+            </select>
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+            <button class="btn btn-round app-bg-primary app-color-appWhite px-4" (click)="onClickSaveButton()">Save</button>
+        </div>
+    </form>
 </div>

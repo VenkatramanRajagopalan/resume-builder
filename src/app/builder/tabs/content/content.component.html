@@ -10,8 +10,10 @@
           <div [id]="section.id" class="accordion-collapse collapse" data-bs-parent="#sections">
               <div class="accordion-body pt-0">
                 <label *ngIf="section.subHeading" class="mb-2 sub-heading">{{section.subHeading}}</label>
+
+                <!-- Multiple item chip -->
                 <div *ngIf="section.isMultiple">
-                    <div class="rounded-chip" *ngFor="let item of contentJSON[section.key]; let i = index" (click)="onChipClick(section, item, i)" [ngClass]="{'selected': isEditSection === section.id}">
+                    <div class="rounded-chip" *ngFor="let item of contentJSON[section.key]; let i = index" (click)="onChipClick(section, item, i)" [ngClass]="{'selected': isEditSection === section.id && editIndex == i}">
                         <div class="chip-content">
                             <p class="chip-title">
                                 <b>
@@ -32,6 +34,8 @@
                         <i class="bi bi-x-circle" (click)="onRemoveItemClick(section, item, i)"></i>
                     </div>
                 </div>
+
+                <!-- Dynamic Fields -->
                 <div *ngFor="let field of section.fieldsList">
                     
                     <!-- Input Field -->
@@ -44,6 +48,7 @@
                                 [id]="field.id"
                                 *ngIf="!section.isMultiple"
                                 [attr.accept]="field.format == INPUT_FORMAT_TYPES.FILE ? 'image/*' : null"
+                                (change)="onInputChange($event, field, contentJSON[section.key], field.id)"
                                 [(ngModel)]="contentJSON[section.key][field.id]"
                                 [name]="field.id"
                                 [placeholder]="field.placeholderText" />
@@ -52,6 +57,7 @@
                                 class="form-control"
                                 [id]="field.id"
                                 *ngIf="section.isMultiple"
+                                (change)="onInputChange($event, field, contentJSON[section.key+'Struct'], field.id)"
                                 [attr.accept]="field.format == INPUT_FORMAT_TYPES.FILE ? 'image/*' : null"
                                 [(ngModel)]="contentJSON[section.key+'Struct'][field.id]"
                                 [name]="field.id"

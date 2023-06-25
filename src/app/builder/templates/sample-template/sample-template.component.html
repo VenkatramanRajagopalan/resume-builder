@@ -1,6 +1,6 @@
 <div>
     <section>
-        <img [src]="contentJSON?.profileSummarySection?.candidatePic == null || contentJSON?.profileSummarySection?.candidatePic == '' ? '/assets/images/default-user-icon.jpg' : contentJSON?.profileSummarySection?.candidatePic" width="100px" height="100px"/>
+        <img [src]="contentJSON?.profileSummarySection?.candidatePicDataURL == null || contentJSON?.profileSummarySection?.candidatePicDataURL == '' ? '/assets/images/default-user-icon.jpg' : contentJSON?.profileSummarySection?.candidatePicDataURL" width="100px" height="100px"/>
         <h2>{{contentJSON?.profileSummarySection?.candidateName}}</h2>
         <h5>{{contentJSON?.profileSummarySection?.candidateJobRole}}</h5>
     </section>

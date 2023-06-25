@@ -8,7 +8,8 @@
             "id": "t01",
             "name": "Light",
             "colorPrimary": "#6c999a",
-            "colorSecondary": "#ebcbbb"
+            "colorSecondary": "#ebcbbb",
+            "isActive": true
         }
     ],
     "fontStyle": "Calibri"

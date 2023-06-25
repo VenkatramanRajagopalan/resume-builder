@@ -41,6 +41,19 @@ export class ContentComponent implements OnInit, AfterViewInit, OnChanges {
 		return CHIP_TYPE;
 	}
 
+	onInputChange(file: any, field: FormField, section: any, fieldKey: string): void {
+		if (field.format === INPUT_FORMAT_TYPES.FILE) {
+			const input = file.target;
+			const reader = new FileReader();
+			reader.onload = function(){
+				var dataURL = reader.result;
+				section[fieldKey+'DataURL'] = dataURL;
+			};
+			console.log(input);
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
 	public onClickSaveButton(section: Section): void {
 		this.onSectionValueChange.emit(this.contentJSON);
 	}
@@ -76,7 +89,6 @@ export class ContentComponent implements OnInit, AfterViewInit, OnChanges {
 
 	public onChipClick(section: Section, item: any, index: number): void {
 		this.isEditSection = section.id;
-		console.log(section, item, this.isEditSection);
 		this.editIndex = index;
 		this.contentJSON[`${section.key}Struct`] = {...item};
 	}

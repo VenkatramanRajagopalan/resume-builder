@@ -1,3 +1,12 @@
 <div class="exports-tab px-3">
-    <p>Exports work</p>
+    <form>
+        <div class="mb-3">
+            <label for="exportFileName" class="form-label m-0"><b>File Name</b></label>
+            <input type="text" class="form-control" id="exportFileName" [(ngModel)]="export.fileName" name="exportFileName" placeholder="">
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+            <button class="btn btn-round app-bg-primary app-color-appWhite px-4" (click)="onClickExportButton()">Export</button>
+        </div>
+    </form>
 </div>

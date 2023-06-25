@@ -31,6 +31,7 @@ export class BuilderComponent implements OnInit {
 	public selectedTemplate: Template = <Template>{};
 	public templateDetails: TemplateDetails = <TemplateDetails>{};
 	public templateContent: any = {};
+	public templateConfig: any = {};
 
 	constructor(private utilityService: UtilityService, private _router: Router) { }
 
@@ -56,6 +57,7 @@ export class BuilderComponent implements OnInit {
 	private fetchTemplateDetails(): void {
 		this.utilityService.getTemplateDetails(this.selectedTemplate.templateFile).subscribe(template => {
 			if (template) {
+				this.templateDetails = template;
 				this.fetchAvailableSections(template);
 			} else {
 				alert('Unable to fetch template details. Not found');
@@ -92,5 +94,9 @@ export class BuilderComponent implements OnInit {
 	onSectionValueChange(contentJSON: any): void {
 		this.templateContent = contentJSON;
 		console.log(contentJSON);
+	}
+
+	onThemeChange($event: TemplateDetails): void {
+		this.templateDetails = $event;
 	}
 }

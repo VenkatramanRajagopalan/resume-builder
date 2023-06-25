@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ExportComponent {
 
+    public export: {fileName: string} = {fileName: ''};
+
+    constructor() { }
+
+    onClickExportButton(): void { }
 }

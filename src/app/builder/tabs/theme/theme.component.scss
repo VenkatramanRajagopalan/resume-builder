@@ -1,2 +1,21 @@
+@import 'theme';
+
 .themes-tab {
+    .theme-circle {
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        border: 3px solid $colorWhiteLight;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 12px;
+
+        &.active {
+            border-color: $colorPrimaryLight;
+        }
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
 }

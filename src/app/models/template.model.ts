@@ -23,5 +23,6 @@ export interface Theme {
     id: string,
     name: string,
     colorPrimary: string,
-    colorSecondary: string
+    colorSecondary: string,
+    isActive: boolean,
 }
