@@ -1,1 +1,6 @@
-<p>canvas works!</p>
+<div *ngIf="templateDetails">
+    <div #templateHost>
+        <!-- TODO: Add dynamic logic -->
+        <app-sample-template *ngIf="selectedTemplate.componentSelector == 'app-sample-template'" [contentJSON]="templateContent"></app-sample-template>
+    </div>
+</div>

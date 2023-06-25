@@ -4,7 +4,8 @@
         "name": "Sample Template 1",
         "templateFile": "sample-template.json",
         "thumbnail": "sample-template-thumnail.svg",
-        "section": ["001", "002", "003", "004"],
+        "componentSelector": "app-sample-template",
+        "section": ["profileSummarySection3", "contactDetailsSection1", "educationDetailsSection2", "skillsSection1", "experienceSection1", "languagesKnownSection1"],
         "createdDate": "Wed Jun 21 2023 22:20:00",
         "timeInMillis": 1687366200000
     }

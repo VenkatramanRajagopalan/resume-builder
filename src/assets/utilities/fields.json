@@ -66,7 +66,7 @@
             }
         ]
     }, {
-        "id": "cadidateJobRole",
+        "id": "candidateJobRole",
         "label": "Job Role",
         "type": "INPUT",
         "format": "text",
@@ -330,6 +330,20 @@
                 "ruleName": "required",
                 "errorMessage": "Please provide some input"
             }, {
+                "ruleName": "alphanumericWithFewSpecialCharacters",
+                "prop": "/[a-zA-Z0-9\\._$#-,!()*&%]/",
+                "errorMessage": "Please enter valid details"
+            }
+        ]
+    }, {
+        "id": "candidatePic",
+        "label": "Upload your photo",
+        "type": "INPUT",
+        "format": "file",
+        "placeholderText": "",
+        "spanSize": "1",
+        "validationRules": [
+            {
                 "ruleName": "alphanumericWithFewSpecialCharacters",
                 "prop": "/[a-zA-Z0-9\\._$#-,!()*&%]/",
                 "errorMessage": "Please enter valid details"

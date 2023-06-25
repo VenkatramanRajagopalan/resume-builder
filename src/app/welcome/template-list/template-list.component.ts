@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilityService } from '@app/_services/utility.service';
 import { ROUTE_CONSTANTS } from '@app/constants/constants';
-import { TemplateList } from '@app/models/template.model';
+import { TemplateDetails, Template } from '@app/models/template.model';
 
 @Component({
   selector: 'app-template-list',
@@ -11,7 +11,8 @@ import { TemplateList } from '@app/models/template.model';
 })
 export class TemplateListComponent implements OnInit {
 
-	public templateList: TemplateList[] = [];
+	public templateList: Template[] = [];
+	public selectedTemplate: Template = <Template>{};
 	
 	constructor(private _router: Router, private utilityService: UtilityService) {}
 
@@ -20,6 +21,7 @@ export class TemplateListComponent implements OnInit {
 	}
 
 	onClickContinue(): void {
+		this.utilityService.setSelectedTemplate(this.selectedTemplate);
 		this._router.navigate([ROUTE_CONSTANTS.BUILDER]);
 	}
 
@@ -33,7 +35,8 @@ export class TemplateListComponent implements OnInit {
 		});
 	}
 
-	onTemplateClick(template: TemplateList): void {
+	onTemplateClick(template: Template): void {
+		this.selectedTemplate = template;
 		this.templateList.forEach(temp => temp.isSelected = template.id === temp.id ? !temp.isSelected : false);
 	}
 }

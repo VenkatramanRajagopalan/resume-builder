@@ -1,3 +1,4 @@
+import { CHIP_TYPE } from "@app/constants/enums"
 import { FormField } from "./field.model"
 
 export interface Section {
@@ -7,6 +8,11 @@ export interface Section {
     subHeading: string,
     isMandatory: boolean,
     isMultiple: boolean,
+    chipDetails: {
+        chipType: CHIP_TYPE,
+        chipTitle: string,
+        chipSubTitle?: string
+    }
     fieldsList: FormField[],
     fields: string[],
     hints?: Object[]

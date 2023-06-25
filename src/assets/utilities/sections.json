@@ -1,24 +1,33 @@
 [
     {
-        "id": "001",
+        "id": "profileSummarySection1",
         "title": "Profile Summary",
         "key": "profileSummarySection",
         "isMandatory": true,
         "isMultiple": false,
         "hints": [],
-        "fields": ["candidateName", "cadidateJobRole", "objectiveSummary"]
+        "fields": ["candidateName", "candidateJobRole", "objectiveSummary"]
     },
     {
-        "id": "002",
+        "id": "profileSummarySection2",
         "title": "Profile Summary",
         "key": "profileSummarySection",
         "isMandatory": true,
         "isMultiple": false,
         "hints": [],
-        "fields": ["candidateName", "cadidateJobRole"]
+        "fields": ["candidateName", "candidateJobRole"]
     },
     {
-        "id": "003",
+        "id": "profileSummarySection3",
+        "title": "Profile Summary",
+        "key": "profileSummarySection",
+        "isMandatory": true,
+        "isMultiple": false,
+        "hints": [],
+        "fields": ["candidateName", "candidateJobRole", "candidatePic"]
+    },
+    {
+        "id": "contactDetailsSection1",
         "title": "Contact Details",
         "key": "contactDetailsSection",
         "isMandatory": true,
@@ -27,69 +36,103 @@
         "fields": ["contactEmail", "contactMobileNumber", "contactAddress"]
     },
     {
-        "id": "004",
+        "id": "educationDetailsSection1",
         "title": "Education Details",
         "subHeading": "Add in reverse chronological order",
         "key": "educationDetailsSection",
         "isMandatory": false,
         "isMultiple": true,
+        "chipDetails": {
+            "chipType": "type1",
+            "chipTitle": "degree",
+            "chipSubTitle": "institutionName"
+        },
         "hints": [],
         "fields": ["institutionName", "degree", "institutionLocation", "passedOutYear"]
     },
     {
-        "id": "005",
+        "id": "educationDetailsSection2",
         "title": "Education Details",
         "subHeading": "Add in reverse chronological order",
         "key": "educationDetailsSection",
         "isMandatory": false,
         "isMultiple": true,
+        "chipDetails": {
+            "chipType": "type1",
+            "chipTitle": "degree",
+            "chipSubTitle": "institutionName"
+        },
         "hints": [],
         "fields": ["institutionName", "degree", "institutionLocation", "passedOutYearFrom", "passedOutYearTo"]
     },
     {
-        "id": "006",
+        "id": "educationDetailsSection3",
         "title": "Education Details",
         "subHeading": "Add in reverse chronological order",
         "key": "educationDetailsSection",
         "isMandatory": false,
         "isMultiple": true,
+        "chipDetails": {
+            "chipType": "type1",
+            "chipTitle": "degree",
+            "chipSubTitle": "institutionName"
+        },
         "hints": [],
         "fields": ["institutionName", "degree", "institutionLocation", "passedOutYearFrom", "passedOutYearTo", "institutionAchievements"]
     },
     {
-        "id": "007",
+        "id": "educationDetailsSection4",
         "title": "Education Details",
         "subHeading": "Add in reverse chronological order",
         "key": "educationDetailsSection",
         "isMandatory": false,
         "isMultiple": true,
+        "chipDetails": {
+            "chipType": "type1",
+            "chipTitle": "degree",
+            "chipSubTitle": "institutionName"
+        },
         "hints": [],
         "fields": ["institutionName", "degree", "institutionLocation", "passedOutYear", "institutionAchievements"]
     },
     {
-        "id": "008",
+        "id": "skillsSection1",
         "title": "Skills",
         "key": "skillsSection",
         "isMandatory": false,
         "isMultiple": true,
+        "chipDetails": {
+            "chipType": "type2",
+            "chipTitle": "candidateSkills"
+        },
         "hints": [],
         "fields": ["candidateSkills"]
     },
     {
-        "id": "009",
+        "id": "languagesKnownSection1",
         "title": "Languages Known",
         "key": "languagesKnownSection",
         "isMandatory": false,
         "isMultiple": true,
+        "chipDetails": {
+            "chipType": "type1",
+            "chipTitle": "languagesKnown.languageName",
+            "chipSubTitle": "languagesKnown.langProficiency"
+        },
         "hints": [],
         "fields": ["languagesKnown"]
     },
     {
-        "id": "010",
+        "id": "experienceSection1",
         "title": "Experience",
         "key": "experienceSection",
         "isMandatory": false,
         "isMultiple": true,
+        "chipDetails": {
+            "chipType": "type1",
+            "chipTitle": "organizationName",
+            "chipSubTitle": "organizationRole"
+        },
         "hints": [],
         "fields": ["organizationName", "organizationRole", "organizationLocation", "organizationDateRange", "jobDescription"]
     }

@@ -11,7 +11,8 @@ export enum INPUT_FORMAT_TYPES {
     NUMBER = 'number',
     DATE = 'date',
     NUMBER_LIST = 'numberList',
-    EMAIL = 'email'
+    EMAIL = 'email',
+    FILE = 'file'
 }
 
 export enum SECTION_ID {
@@ -32,4 +33,10 @@ export enum FIELD_FORMAT {
     NUMBER = 'number',
     DATE = 'date',
     NUMBER_LIST = 'numberList'
+}
+
+export enum CHIP_TYPE {
+    TYPE_1 = 'type1',
+    TYPE_2 = 'type2',
+    TYPE_3 = 'type3',
 }

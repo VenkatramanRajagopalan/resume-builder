@@ -1,31 +1,31 @@
 [
     {
-        "id": "001",
+        "id": "profileSummarySection1",
         "title": "Profile Summary",
         "isMandatory": true
     },
     {
-        "id": "003",
+        "id": "contactDetailsSection1",
         "title": "Contact Details",
         "isMandatory": true
     },
     {
-        "id": "004",
+        "id": "educationDetailsSection1",
         "title": "Education Details",
         "isMandatory": false
     },
     {
-        "id": "008",
+        "id": "skillsSection1",
         "title": "Skills",
         "isMandatory": false
     },
     {
-        "id": "009",
+        "id": "languagesKnownSection1",
         "title": "Languages Known",
         "isMandatory": false
     },
     {
-        "id": "010",
+        "id": "experienceSection1",
         "title": "Experience",
         "isMandatory": false
     }

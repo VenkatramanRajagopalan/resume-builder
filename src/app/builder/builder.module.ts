@@ -7,6 +7,7 @@ import { ContentComponent } from './tabs/content/content.component';
 import { ThemeComponent } from './tabs/theme/theme.component';
 import { ExportComponent } from './tabs/export/export.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SampleTemplateComponent } from './templates/sample-template/sample-template.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContentComponent,
     ThemeComponent,
     ExportComponent,
+    SampleTemplateComponent
   ],
   imports: [
     CommonModule,

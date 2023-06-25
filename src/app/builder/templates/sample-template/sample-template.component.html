@@ -1,0 +1,35 @@
+<div>
+    <section>
+        <img [src]="contentJSON?.profileSummarySection?.candidatePic == null || contentJSON?.profileSummarySection?.candidatePic == '' ? '/assets/images/default-user-icon.jpg' : contentJSON?.profileSummarySection?.candidatePic" width="100px" height="100px"/>
+        <h2>{{contentJSON?.profileSummarySection?.candidateName}}</h2>
+        <h5>{{contentJSON?.profileSummarySection?.candidateJobRole}}</h5>
+    </section>
+    <section>
+        <h3>Contact Details</h3>
+        <p>{{contentJSON?.contactDetailsSection?.contactEmail}}</p>
+        <p>{{contentJSON?.contactDetailsSection?.contactMobileNumber}}</p>
+        <p>{{contentJSON?.contactDetailsSection?.contactAddress}}</p>
+    </section>
+    <section>
+        <h3>Skills</h3>
+        <p *ngFor="let skill of contentJSON?.skillsSection">{{skill.candidateSkills}}</p>
+    </section>
+    <section>
+        <h3>Experience</h3>
+        <div *ngFor="let experience of contentJSON?.experienceSection">
+            <h5>{{experience.organizationName}}</h5>
+            <p>{{experience.organizationRole}}</p>
+            <p>{{experience.organizationLocation}}</p>
+            <p>{{'From: ' + experience.organizationDateRange.fromDate + ', To: ' + experience.organizationDateRange.toDate}}</p>
+            <p>{{experience.jobDescription}}</p>
+        </div>
+    </section>
+    <section>
+        <h3>Education Details</h3>
+        <div *ngFor="let education of contentJSON?.educationDetailsSection">
+            <h5>{{education.institutionName}}</h5>
+            <p>{{education.degree}}</p>
+            <p>{{education.institutionLocation}}</p>
+        </div>
+    </section>
+</div>

@@ -1,7 +1,8 @@
-export interface TemplateList {
+export interface Template {
     id: string,
     name: string,
     templateFile: string,
+    componentSelector: string,
     thumbnail: string,
     section: string[],
     createdDate: string,
@@ -9,7 +10,7 @@ export interface TemplateList {
     isSelected?: boolean
 }
 
-export interface Template {
+export interface TemplateDetails {
     name: string,
     description: string,
     thumbnail: string,
@@ -19,6 +20,8 @@ export interface Template {
 }
 
 export interface Theme {
+    id: string,
+    name: string,
     colorPrimary: string,
     colorSecondary: string
 }

@@ -21,11 +21,64 @@
             font-size: 12px;
         }
 
+        .form-label {
+            font-size: 14px;
+        }
+
         .mobile-input-code {
-            flex-basis: 50px;
+            flex-basis: 60px;
             margin-right: 8px;
         }
+        
+        .first-col {
+            padding-right: 8px;
+        }
     }
+
+    .rounded-chip {
+        border-radius: 2.5rem;
+        color: $colorPrimaryLight;
+        border: 1px solid $colorBorderLight;
+        background-color: $colorWhiteLight;
+        display: inline-flex;
+        padding: 4px 12px;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 12px;
+        margin-bottom: 12px;
+
+        .chip-content {
+            flex-grow: 1;
+            margin-right: 16px;
+
+            .chip-title {
+                font-size: 12px;
+                padding: 0px;
+                margin: 0px;
+                line-height: 1;
+            }
+
+            .chip-sub-title {
+                font-size: 10px;
+                padding: 0px;
+                margin: 0px;
+                line-height: 1;
+            }
+
+            i {
+                line-height: 1;
+            }
+        }
+
+        &.selected {
+            background-color: $colorPrimaryLight;
+            .chip-title, .chip-sub-title, i {
+                color: $colorWhiteLight !important;
+            }
+        }
+
+    }
+
     .footer-buttons {
         margin-top: 34px;
     }

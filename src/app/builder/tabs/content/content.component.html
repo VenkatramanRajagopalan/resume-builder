@@ -10,6 +10,28 @@
           <div [id]="section.id" class="accordion-collapse collapse" data-bs-parent="#sections">
               <div class="accordion-body pt-0">
                 <label *ngIf="section.subHeading" class="mb-2 sub-heading">{{section.subHeading}}</label>
+                <div *ngIf="section.isMultiple">
+                    <div class="rounded-chip" *ngFor="let item of contentJSON[section.key]; let i = index" (click)="onChipClick(section, item, i)" [ngClass]="{'selected': isEditSection === section.id}">
+                        <div class="chip-content">
+                            <p class="chip-title">
+                                <b>
+                                    {{
+                                        section.chipDetails.chipTitle.indexOf('.') >= 0 ?
+                                        item[section.chipDetails.chipTitle.split('.')[0]][section.chipDetails.chipTitle.split('.')[1]] :
+                                        item[section.chipDetails.chipTitle]
+                                    }}
+                                </b></p>
+                            <p class="chip-sub-title" *ngIf="section.chipDetails?.chipType === CHIP_TYPE.TYPE_1">
+                                {{
+                                    section.chipDetails.chipSubTitle!.indexOf('.') >= 0 ?
+                                    item[section.chipDetails.chipSubTitle!.split('.')[0]][section.chipDetails.chipSubTitle!.split('.')[1]] :
+                                    item[section.chipDetails.chipSubTitle!]
+                                }}
+                            </p>
+                        </div>
+                        <i class="bi bi-x-circle" (click)="onRemoveItemClick(section, item, i)"></i>
+                    </div>
+                </div>
                 <div *ngFor="let field of section.fieldsList">
                     
                     <!-- Input Field -->
@@ -17,10 +39,22 @@
                         <div>
                             <label [for]="field.id" class="form-label m-0"><b>{{field.label}}</b></label>
                             <input
-                                [type]="field.format ? field.format : ''"
+                                [type]="field.format ? field.format : 'text'"
                                 class="form-control"
                                 [id]="field.id"
-                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                *ngIf="!section.isMultiple"
+                                [attr.accept]="field.format == INPUT_FORMAT_TYPES.FILE ? 'image/*' : null"
+                                [(ngModel)]="contentJSON[section.key][field.id]"
+                                [name]="field.id"
+                                [placeholder]="field.placeholderText" />
+                            <input
+                                [type]="field.format ? field.format : 'text'"
+                                class="form-control"
+                                [id]="field.id"
+                                *ngIf="section.isMultiple"
+                                [attr.accept]="field.format == INPUT_FORMAT_TYPES.FILE ? 'image/*' : null"
+                                [(ngModel)]="contentJSON[section.key+'Struct'][field.id]"
+                                [name]="field.id"
                                 [placeholder]="field.placeholderText" />
                         </div>
                     </div>
@@ -33,29 +67,54 @@
                                 class="form-control"
                                 [id]="field.id"
                                 rows="4"
-                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                *ngIf="!section.isMultiple"
+                                [(ngModel)]="contentJSON[section.key][field.id]"
+                                [placeholder]="field.placeholderText"></textarea>
+                            <textarea
+                                class="form-control"
+                                [id]="field.id"
+                                rows="4"
+                                *ngIf="section.isMultiple"
+                                [(ngModel)]="contentJSON[section.key+'Struct'][field.id]"
                                 [placeholder]="field.placeholderText"></textarea>
                         </div>
                     </div>
 
                     <!-- INPUT_GROUP Field -->
-                    <div *ngIf="field.type === INPUT_TYPES.INPUT_GROUP" class="mb-4 d-flex justify-content-between">
-                        <div *ngFor="let groupItem of field.groupFieldsList" [class]="'flex-grow-'+groupItem.spanSize">
-                            <div *ngIf="groupItem.type === INPUT_TYPES.INPUT" class="mb-4 me-3">
+                    <div *ngIf="field.type === INPUT_TYPES.INPUT_GROUP" class=" mb-4 d-flex justify-content-between">
+                        <div *ngFor="let groupItem of field.groupFieldsList; let i = index;" [class]="'app-flex-grow-'+groupItem.spanSize">
+                            <div *ngIf="groupItem.type === INPUT_TYPES.INPUT" [ngClass]="{'first-col': i == 0}">
                                 <label [for]="groupItem.id" class="form-label m-0"><b>{{groupItem.label}}</b></label>
                                 <input
                                     [type]="groupItem.format ? groupItem.format : ''"
                                     class="form-control"
                                     [id]="groupItem.id"
-                                    [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id][groupItem.id] : contentJSON[section.key][field.id][groupItem.id]"
+                                    *ngIf="!section.isMultiple"
+                                    [(ngModel)]="contentJSON[section.key][field.id][groupItem.id]"
+                                    [placeholder]="groupItem.placeholderText" />
+                                <input
+                                    [type]="groupItem.format ? groupItem.format : ''"
+                                    class="form-control"
+                                    [id]="groupItem.id"
+                                    *ngIf="section.isMultiple"
+                                    [(ngModel)]="contentJSON[section.key+'Struct'][field.id][groupItem.id]"
                                     [placeholder]="groupItem.placeholderText" />
                             </div>
-                            <div *ngIf="groupItem.type === INPUT_TYPES.SINGLE_SELECT" class="mb-4">
+                            <div *ngIf="groupItem.type === INPUT_TYPES.SINGLE_SELECT" [ngClass]="{'first-col': i == 0}">
                                 <label [for]="groupItem.id" class="form-label m-0"><b>{{groupItem.label}}</b></label>
                                 <select
                                     class="form-select" 
                                     [id]="groupItem.id"
-                                    [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                    *ngIf="!section.isMultiple"
+                                    [(ngModel)]="contentJSON[section.key][field.id][groupItem.id]"
+                                    [attr.aria-label]="groupItem.placeholderText">
+                                    <option *ngFor="let option of groupItem.options" [value]="option.id">{{option.value}}</option>
+                                </select>
+                                <select
+                                    class="form-select"
+                                    [id]="groupItem.id"
+                                    *ngIf="section.isMultiple"
+                                    [(ngModel)]="contentJSON[section.key+'Struct'][field.id][groupItem.id]"
                                     [attr.aria-label]="groupItem.placeholderText">
                                     <option *ngFor="let option of groupItem.options" [value]="option.id">{{option.value}}</option>
                                 </select>
@@ -66,19 +125,36 @@
                     <!-- Input Mobile group Field -->
                     <div *ngIf="field.type === INPUT_TYPES.INPUT_GROUP_MOBILE" class="mb-4">
                         <label [for]="field.id" class="form-label m-0"><b>{{field.label}}</b></label>
-                        <div class="d-flex">
-                            <input
-                                type="text"
-                                class="form-control app-flex-grow-1 mobile-input-code"
-                                [id]="field.id+'Code'"
-                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id+'Code'] : contentJSON[section.key][field.id]"
-                                [placeholder]="field.placeholderText" />
-                            <input
-                                [type]="field.format ? field.format : ''"
-                                class="form-control app-flex-grow-3"
-                                [id]="field.id"
-                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
-                                [placeholder]="field.placeholderText" />
+                        <div>
+                            <div class="d-flex" *ngIf="!section.isMultiple">
+                                <input
+                                    type="text"
+                                    class="form-control app-flex-grow-1 mobile-input-code"
+                                    [id]="field.id+'Code'"
+                                    [(ngModel)]="contentJSON[section.key][field.id+'Code']"
+                                    [placeholder]="field.placeholderText" />
+                                <input
+                                    [type]="field.format ? field.format : ''"
+                                    class="form-control app-flex-grow-3"
+                                    [id]="field.id"
+                                    [(ngModel)]="contentJSON[section.key][field.id]"
+                                    [placeholder]="field.placeholderText" />
+                                </div>
+                            <div class="d-flex" *ngIf="section.isMultiple">
+                                <input
+                                    type="text"
+                                    class="form-control app-flex-grow-1 mobile-input-code"
+                                    [id]="field.id+'Code'"
+                                    [(ngModel)]="contentJSON[section.key+'Struct'][field.id+'Code']"
+                                    [placeholder]="field.placeholderText" />
+                                <input
+                                    [type]="field.format ? field.format : ''"
+                                    class="form-control app-flex-grow-3"
+                                    [id]="field.id"
+                                    [(ngModel)]="contentJSON[section.key+'Struct'][field.id]"
+                                    [placeholder]="field.placeholderText" />
+
+                            </div>
                         </div>
                     </div>
                     
@@ -89,7 +165,16 @@
                             <select
                                 class="form-select" 
                                 [id]="field.id"
-                                [(ngModel)]="section.isMultiple ? contentJSON[section.key+'Struct'][field.id] : contentJSON[section.key][field.id]"
+                                *ngIf="!section.isMultiple"
+                                [(ngModel)]=" contentJSON[section.key][field.id]"
+                                [attr.aria-label]="field.placeholderText">
+                                <option *ngFor="let option of field.options" [value]="option.id">{{option.value}}</option>
+                            </select>
+                            <select
+                                class="form-select" 
+                                [id]="field.id"
+                                *ngIf="section.isMultiple"
+                                [(ngModel)]="contentJSON[section.key+'Struct'][field.id]"
                                 [attr.aria-label]="field.placeholderText">
                                 <option *ngFor="let option of field.options" [value]="option.id">{{option.value}}</option>
                             </select>

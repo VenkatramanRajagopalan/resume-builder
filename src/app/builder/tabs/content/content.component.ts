@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Section } from '@app/models/section.model';
-import { INPUT_TYPES, SECTION_ID } from '@app/constants/enums';
+import { CHIP_TYPE, INPUT_FORMAT_TYPES, INPUT_TYPES, SECTION_ID } from '@app/constants/enums';
+import { FormField } from '@app/models/field.model';
 
 @Component({
   selector: 'app-content',
@@ -31,18 +32,62 @@ export class ContentComponent implements OnInit, AfterViewInit, OnChanges {
 	public get INPUT_TYPES() {
 		return INPUT_TYPES;
 	}
+	
+	public get INPUT_FORMAT_TYPES() {
+		return INPUT_FORMAT_TYPES;
+	}
+	
+	public get CHIP_TYPE() {
+		return CHIP_TYPE;
+	}
 
 	public onClickSaveButton(section: Section): void {
 		this.onSectionValueChange.emit(this.contentJSON);
 	}
 
 	public onClickAddUpdateButton(section: Section): void {
-		if (this.isEditSection) {
-			this.contentJSON[section.key][this.editIndex] = this.contentJSON[`${section.key}Struct`];
-		} else {
-			this.contentJSON[section.key].push(this.contentJSON[`${section.key}Struct`]);
+		if (this.isEditSection && this.isEditSection == section.id) { // EDIT flow
+			this.contentJSON[section.key][this.editIndex] = JSON.parse(JSON.stringify(this.contentJSON[`${section.key}Struct`]));
+			this.editIndex = 0;
+			this.isEditSection = '';
+		} else {  // Add flow
+			this.contentJSON[section.key].push(JSON.parse(JSON.stringify(this.contentJSON[`${section.key}Struct`])));
 		}
+		this.contentJSON[`${section.key}Struct`] = this.emptyStructValue(this.contentJSON[`${section.key}Struct`]);
+		/* Object.keys(this.contentJSON[`${section.key}Struct`]).forEach(key => {
+			if (Object.keys(this.contentJSON[`${section.key}Struct`][key]).length > 0) {
+
+			}
+			this.contentJSON[`${section.key}Struct`][key] = '';
+		}); */
 		this.onSectionValueChange.emit(this.contentJSON);
+	}
+
+	public emptyStructValue(structValue: any): any {
+		Object.keys(structValue).forEach(key => {
+			if (typeof structValue[key] == 'object') {
+				structValue[key] = this.emptyStructValue(structValue[key]);
+			} else {
+				structValue[key] = '';
+			}
+		});
+		return structValue;
+	}
+
+	public onChipClick(section: Section, item: any, index: number): void {
+		this.isEditSection = section.id;
+		console.log(section, item, this.isEditSection);
+		this.editIndex = index;
+		this.contentJSON[`${section.key}Struct`] = {...item};
+	}
+
+	public onRemoveItemClick(section: Section, item: any, index: number): void {
+		this.contentJSON[section.key].splice(index, 1);
+		if (this.isEditSection) {
+			Object.keys(this.contentJSON[`${section.key}Struct`]).forEach(key => this.contentJSON[`${section.key}Struct`][key] = '');
+			this.isEditSection = '';
+			this.editIndex = 0;
+		}
 	}
 
 	private buildContentJSON(): void {

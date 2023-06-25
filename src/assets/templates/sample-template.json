@@ -2,9 +2,11 @@
     "name": "Sample Template",
     "description": "A sample template with simple desing",
     "thumbnail": "sample-template-thumnail.svg",
-    "availableSections": ["001", "002", "003", "004"],
+    "availableSections": ["profileSummarySection3", "contactDetailsSection1", "educationDetailsSection2", "skillsSection1", "experienceSection1", "languagesKnownSection1"],
     "themes": [
         {
+            "id": "t01",
+            "name": "Light",
             "colorPrimary": "#6c999a",
             "colorSecondary": "#ebcbbb"
         }

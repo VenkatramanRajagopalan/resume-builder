@@ -2,13 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormField } from '@app/models/field.model';
 import { Section, SectionList } from '@app/models/section.model';
-import { Template, TemplateList } from '@app/models/template.model';
-import { Observable, of } from 'rxjs';
+import { TemplateDetails, Template } from '@app/models/template.model';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
+
+  private _selectedTemplate: BehaviorSubject<Template> = new BehaviorSubject<Template>(<Template>{});
+  private _selectedTemplate$ = this._selectedTemplate.asObservable();
+  
+  private _selectedSections: BehaviorSubject<Section> = new BehaviorSubject<Section>(<Section>{});
+  private _selectedSections$ = this._selectedSections.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -24,12 +30,28 @@ export class UtilityService {
     return this.http.get<FormField[]>('/assets/utilities/fields.json');
   }
 
-  getTemplateList(): Observable<TemplateList[]> {
-    return this.http.get<TemplateList[]>('/assets/utilities/template-list.json');
+  getTemplateList(): Observable<Template[]> {
+    return this.http.get<Template[]>('/assets/utilities/template-list.json');
   }
 
-  getTemplate(templateFileName: string): Observable<Template> {
-    return this.http.get<Template>(`/assets/templates/${templateFileName}`);
+  getTemplateDetails(templateFileName: string): Observable<TemplateDetails> {
+    return this.http.get<TemplateDetails>(`/assets/templates/${templateFileName}`);
+  }
+
+  setSelectedTemplate(template: Template): void {
+    this._selectedTemplate.next(template);
+  }
+
+  getSelectedTemplate(): Observable<Template> {
+    return this._selectedTemplate$;
+  }
+
+  setSelectedSections(section: Section): void {
+    this._selectedSections.next(section);
+  }
+
+  getSelectedSections(): Observable<Section> {
+    return this._selectedSections$;
   }
 
 }
